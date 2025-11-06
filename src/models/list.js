@@ -6,12 +6,17 @@ const ListSchema = new Schema({
     type: String,
     required: true
   },
-  // Ini penting: List akan berisi array dari ID Card
-  // Ini cara kita menyimpan urutan kartu
+  // Menyimpan array dari ID Card
   cards: [{
     type: Schema.Types.ObjectId,
-    ref: 'Card' // Merujuk ke model 'Card'
-  }]
+    ref: 'Card' 
+  }],
+  
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User', // Merujuk ke model 'User'
+    required: true
+  }
 });
 
 module.exports = mongoose.model('List', ListSchema);
